@@ -28,7 +28,7 @@
         v-for="subItem in item.children"
         :key="subItem.index"
       >
-        <el-menu-item :index="subItem.order">{{ subItem.label }}</el-menu-item>
+        <el-menu-item @click="clickMenu(subItem)" :index="subItem.order">{{ subItem.label }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
@@ -117,6 +117,7 @@ export default {
       this.$router.push({
         name: item.name,
       });
+      this.$store.commit('selectMenu',item)
     },
   },
   computed: {
